@@ -69,7 +69,6 @@ source $ZSH/oh-my-zsh.sh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-source /usr/local/bin/virtualenvwrapper.sh
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -80,6 +79,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # User specific settings
+source /usr/local/bin/virtualenvwrapper.sh
 alias exercism=~/dev/exercism/exercism
+alias vim="mvim -v"
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+. /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh

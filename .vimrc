@@ -6,11 +6,13 @@ set rtp+=~/.vim/bundle/vundle/
 "Installed Plugins
 call vundle#begin()
 Plugin 'gmarik/vundle'
-Plugin 'powerline/powerline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'klen/python-mode'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'sjl/gundo.vim'
+Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
 "Personal settings
@@ -22,13 +24,17 @@ set shiftwidth=4
 set softtabstop=4
 set modeline
 set background=dark
-set statusline=2
 set nofoldenable
+set laststatus=2
+set number
+set shell=zsh\ -i
 
-"Disable arrow keys and ESC key
+"Custom key mappings
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Esc> <NOP>
 inoremap jj <ESC>
+
+
