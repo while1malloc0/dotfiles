@@ -8,11 +8,13 @@ call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
-Plugin 'klen/python-mode'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'sjl/gundo.vim'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 Plugin 'scrooloose/nerdtree'
+Plugin 'python.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'powerline/powerline'
+Plugin 'hdima/python-syntax'
 call vundle#end()
 
 "Personal settings
@@ -27,7 +29,7 @@ set background=dark
 set nofoldenable
 set laststatus=2
 set number
-set shell=zsh\ -i
+colorscheme desert
 
 "Custom key mappings
 noremap <Up> <NOP>
