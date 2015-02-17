@@ -1,7 +1,7 @@
 " Preamble to Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=$HOME/.vim/bundle/Vundle.vim/
 
 "Installed Plugins
 call vundle#begin()
@@ -11,7 +11,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'klen/python-mode'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'sjl/gundo.vim'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
