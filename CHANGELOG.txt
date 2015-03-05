@@ -1,0 +1,3 @@
+Wed Mar  4 01:40:38 EST 2015
+ Removed python mode, added jedi-vim and supertab to vimrc
+Thu Mar  5 01:01:44 EST 2015 Update vimrc
