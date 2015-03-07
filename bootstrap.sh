@@ -1,5 +1,4 @@
-#!/usr/local/bin/bash
-cd "$(dirname "$0")"
+#!/bin/bash
 git pull
 function doIt(){
     rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" --exclude "CHANGELOG.txt" -av . ~
@@ -16,5 +15,5 @@ else
 fi
 
 unset doIt
-source ~/.zshrc
+echo "source ~/.zshrc" | zsh
 
