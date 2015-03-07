@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/vundle/
 "Installed Plugins
 call vundle#begin()
 Plugin 'gmarik/vundle'
-Plugin 'vim-scripts/AutoComplPop'
 Plugin 'scrooloose/syntastic'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -39,7 +38,6 @@ set directory=~/.vim/swaps
 if exists("&undodir")
     set undodir=~/.vim/undo
 endif
-set list
 set hlsearch
 set ignorecase
 set mouse=a
