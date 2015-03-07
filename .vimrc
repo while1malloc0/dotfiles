@@ -11,11 +11,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'sjl/gundo.vim'
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'ervandew/supertab'
 call vundle#end()
 
 "  Personal settings
@@ -49,6 +47,8 @@ set title
 set showcmd
 set scrolloff=3
 
+" Powerline
+let Powerline_symols = 'fancy'
 
 "  Custom key mappings
 let mapleader=','
@@ -89,12 +89,6 @@ autocmd vimenter * call cursor(1, 1)
 autocmd vimenter * NERDTree
 " Treat JSON with JS syntax
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-" Python stuff
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 formatoptions+=croq softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 " Close NERDTree if it's the only file
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
-" More python stuff
-let python_highlight_all=1
-let python_highlight_exceptions=1
-let python_highlight_builtins=1
 
