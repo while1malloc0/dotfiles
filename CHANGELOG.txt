@@ -1,7 +1,0 @@
-Wed Mar  4 01:40:38 EST 2015
- Removed python mode, added jedi-vim and supertab to vimrc
-Thu Mar  5 01:01:44 EST 2015 Update vimrc
-Sat Mar  7 16:04:49 EST 2015 Add .osx
-Sat Mar  7 16:18:10 EST 2015 Made vimrc changes based on Hannes
-Sat Mar  7 16:24:10 EST 2015 Added bootstrap.sh
-Sat Mar  7 16:48:35 EST 2015 Update bootstrap to use zsh instead of bash
