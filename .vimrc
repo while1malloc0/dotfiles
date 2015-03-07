@@ -14,6 +14,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'powerline/powerline'
 call vundle#end()
 
 "  Personal settings
