@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 # User specific settings
 source /usr/local/bin/virtualenvwrapper.sh
 alias exercism=~/dev/exercism/exercism
-alias vim="mvim -v"
+alias vim="mvim -v -i NONE -X"
 alias vimconfig="vim ~/.vimrc"
 alias zshconfig="vim ~/.zshrc"
 bindkey -v
