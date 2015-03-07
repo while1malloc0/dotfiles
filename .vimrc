@@ -1,9 +1,9 @@
-" Preamble to Vundle
+"  Preamble to Vundle
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 
-"Installed Plugins
+"  Installed Plugins
 call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/syntastic'
@@ -18,7 +18,7 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'ervandew/supertab'
 call vundle#end()
 
-"Personal settings
+"  Personal settings
 syntax on
 filetype indent plugin on
 set tabstop=8
@@ -36,7 +36,7 @@ set gdefault
 set noeol
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
-if exists("&undodir")
+if exists('&undodir')
     set undodir=~/.vim/undo
 endif
 set hlsearch
@@ -50,8 +50,8 @@ set showcmd
 set scrolloff=3
 
 
-"Custom key mappings
-let mapleader=","
+"  Custom key mappings
+let mapleader=','
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -62,12 +62,12 @@ nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
 nnoremap <silent><Space> :nohlsearch<Bar>:echo<CR>
 nnoremap ; :
-inoremap jj <ESC>
+inoremap jj <C-c>
 
-"Custom color settings
+"  Custom color settings
 colorscheme desert
 
-"Custom functions
+"  Custom functions
 function! HLNext(blinktime)
     set invcursorline
     redraw
@@ -77,25 +77,26 @@ function! HLNext(blinktime)
 endfunction
 
 function! StripWhitespace()
-    let save_cursor = getpos(".")
+    let save_cursor = getpos('.')
     let old_query = getreg('/')
     :%s/\s\+$//e
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfunction
 
-"Startup and autocmd
-"Start NERDTree on vim start
+" Startup and autocmd
+autocmd vimenter * call cursor(1, 1)
+" Start NERDTree on vim start
 autocmd vimenter * NERDTree
-"Treat JSON with JS syntax
+" Treat JSON with JS syntax
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-"Python stuff
+" Python stuff
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
     \ formatoptions+=croq softtabstop=4 smartindent
     \ cinwords=if, elif, else, for, while, try, except, finally, def, class, with
-"Close NERDTree if it's the only file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-"More python stuff
+" Close NERDTree if it's the only file
+autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
+" More python stuff
 let python_highlight_all=1
 let python_highlight_exceptions=1
 let python_highlight_builtins=1
