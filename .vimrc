@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'sjl/gundo.vim'
@@ -55,7 +56,7 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <Esc> <NOP>
-noremap <leader>ss :call StripWhitespace()<CR>
+nnoremap <leader>ss :call StripWhitespace()<CR>
 nnoremap <silent> n n:call HLNext(0.4)<cr>
 nnoremap <silent> N N:call HLNext(0.4)<cr>
 nnoremap ; :
@@ -83,11 +84,17 @@ function! StripWhitespace()
 endfunction
 
 "Startup and autocmd
+"Start NERDTree on vim start
 autocmd vimenter * NERDTree
+"Treat JSON with JS syntax
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+"Python stuff
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
     \ formatoptions+=croq softtabstop=4 smartindent
     \ cinwords=if, elif, else, for, while, try, except, finally, def, class, with
+"Close NERDTree if it's the only file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"More python stuff
 let python_highlight_all=1
 let python_highlight_exceptions=1
 let python_highlight_builtins=1
