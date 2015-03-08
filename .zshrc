@@ -87,3 +87,5 @@ alias zshconfig="vim ~/.zshrc"
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
 . /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+source ~/.osx

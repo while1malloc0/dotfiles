@@ -93,10 +93,10 @@ nnoremap ; :
 inoremap jj <C-c>
 nnoremap <C-n> :NERDTree<Enter>
 
-"  Custom color settings
-color molokayo
+" Custom color settings
+colorscheme molokayo
 
-"  Custom functions
+" Custom functions
 function! HLNext(blinktime)
     set invcursorline
     redraw
@@ -113,12 +113,16 @@ function! StripWhitespace()
     call setreg('/', old_query)
 endfunction
 
-" Startup and autocmd
-autocmd vimenter * call cursor(1, 1)
-" Start NERDTree on vim start
-autocmd vimenter * NERDTree
+" Call molokayo color on startup
+autocmd vimenter * :color molokayo
 " Treat JSON with JS syntax
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Close NERDTree if it's the only file
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
 
+" Reload when vimrc changes
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost ~/.vimrc source ~/.vimrc
+    redraw
+augroup END " }
