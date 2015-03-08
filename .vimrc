@@ -21,6 +21,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'fmoralesc/molokayo'
 call vundle#end()
 
 "  Personal settings
@@ -91,7 +92,7 @@ nnoremap ; :
 inoremap jj <C-c>
 
 "  Custom color settings
-colorscheme monokai
+color molokayo
 
 "  Custom functions
 function! HLNext(blinktime)
