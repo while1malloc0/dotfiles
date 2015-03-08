@@ -11,5 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+set -o vi
 source .osx
 source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
