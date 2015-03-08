@@ -19,4 +19,4 @@ if [ ! $MAC_IS_SETUP ]; then
     ./osx-for-hackers.sh  
 fi
 echo "source ~/.zshrc" | zsh
-
+export MAC_IS_SETUP=1
