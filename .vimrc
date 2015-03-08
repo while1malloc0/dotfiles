@@ -14,7 +14,13 @@ Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'powerline/powerline'
+Plugin 'powerline/powerline',  {'rtp': 'powerline/bindings/vim/'}
+Plugin 'colorsupport.vim'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'scrooloose/nerdcommenter'
 call vundle#end()
 
 "  Personal settings
@@ -48,8 +54,28 @@ set title
 set showcmd
 set scrolloff=3
 
+" YouCompleteMe
+let g:ycm_key_list_select_completion=['<c-space>']
+let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_confirm_extra_conf=0
+let g:syntastic_always_populate_loc_list=1
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_strings=1
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+
+" Syntastic
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting=0
+
 " Powerline
-let Powerline_symols = 'fancy'
+let Powerline_symbols = 'fancy'
+
+" Nerdtree
+let NERDTreeHighlightCursorline=1
 
 "  Custom key mappings
 let mapleader=','
@@ -65,7 +91,7 @@ nnoremap ; :
 inoremap jj <C-c>
 
 "  Custom color settings
-colorscheme desert
+colorscheme monokai
 
 "  Custom functions
 function! HLNext(blinktime)
