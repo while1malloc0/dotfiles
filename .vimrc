@@ -15,7 +15,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'powerline/powerline',  {'rtp': 'powerline/bindings/vim/'}
-Plugin 'colorsupport.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
@@ -78,6 +77,10 @@ let Powerline_symbols = 'fancy'
 
 " Nerdtree
 let NERDTreeHighlightCursorline=1
+
+" Jedivim
+let g:jedi#popup_select_first = 0
+let g:jedi#completions_command = '<C-Space>'
 
 "  Custom key mappings
 let mapleader=','
