@@ -5,10 +5,9 @@ set rtp+=~/.vim/bundle/vundle/
 
 "  Installed Plugins
 call vundle#begin()
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'gmarik/vundle'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/nerdtree'
@@ -22,6 +21,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'fmoralesc/molokayo'
 Plugin 'tpope/vim-surround'
+Plugin 'klen/rope-vim'
 call vundle#end()
 
 "  Personal settings
@@ -55,16 +55,6 @@ set title
 set showcmd
 set scrolloff=3
 
-" YouCompleteMe
-let g:ycm_key_list_select_completion=[ '<C-j>' ]
-let g:ycm_key_list_previous_completion=[ '<C-k>']
-let g:ycm_confirm_extra_conf=0
-let g:syntastic_always_populate_loc_list=1
-let g:ycm_min_num_of_chars_for_completion=2
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1
-let g:ycm_collect_identifiers_from_comments_and_strings=1
 
 " Syntastic
 let g:syntastic_error_symbol='>>'
@@ -78,10 +68,6 @@ let Powerline_symbols = 'fancy'
 " Nerdtree
 let NERDTreeHighlightCursorline=1
 
-" Jedivim
-let g:jedi#popup_select_first = 0
-let g:jedi#completions_command = '<C-Space>'
-
 "  Custom key mappings
 let mapleader=','
 noremap <Up> <NOP>
@@ -94,7 +80,14 @@ nnoremap <silent> N N:call HLNext(0.4)<cr>
 nnoremap <silent><Space> :nohlsearch<Bar>:echo<CR>
 nnoremap ; :
 inoremap jj <C-c>
-nnoremap <C-n> :NERDTree<Enter>
+nnoremap <leader>ls :NERDTree<CR>
+
+" Rope mappings
+nnoremap <leader>d :RopeGotoDefinition<CR>
+nnoremap <leader>cw :RopeRename<CR>
+nnoremap <leader>oo :RopeOrganizeImports<CR>
+vnoremap <leader>ev :RopeExtractVariable<CR>
+vnoremap <leader>em :RopeExtractMethod<CR>
 
 " Custom color settings
 colorscheme molokayo
