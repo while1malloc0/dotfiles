@@ -11,7 +11,19 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+bindkey 'jj' vi-cmd-mode
+export PAPERTRAIL_API_TOKEN='PbbaZElGSgDbbLw9dCvr'
 set -o vi
-source .osx
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+if [[ "$(uname)" == "Darwin" ]]; then
+    source ~/.osx
+fi
+source /usr/local/bin/virtualenvwrapper.sh
 
+if [[ "$(uname)" == "Darwin" ]]; then
+    powerlinedir='/usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh'
+else
+    powerlinedir='/usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh'
+fi
+
+source $powerlinedir
+alias gitgraph='git log --graph --oneline --all'
