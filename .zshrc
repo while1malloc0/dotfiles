@@ -27,3 +27,6 @@ fi
 
 source $powerlinedir
 alias gitgraph='git log --graph --oneline --all'
+
+export WUNDERLIST_ACCESS_TOKEN='edeb2271fe6793d1a94aa8d67cf81aa7754a35794067017335f9ef8cae13'
+export WUNDERLIST_CLIENT_ID='6d8fbbde4fcf3153e491'
