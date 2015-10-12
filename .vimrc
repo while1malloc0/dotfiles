@@ -60,8 +60,8 @@ set shortmess=atI
 set title
 set showcmd
 set scrolloff=3
-" For when I use FISH shells
-set shell=bash
+set noswapfile
+set nobackup
 
 " Syntastic
 let g:syntastic_error_symbol='>>'

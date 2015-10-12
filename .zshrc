@@ -10,13 +10,18 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+dotdir=$(dirname $0:A)
+
 # Customize to your needs...
-bindkey 'jj' vi-cmd-mode
-export PAPERTRAIL_API_TOKEN='PbbaZElGSgDbbLw9dCvr'
-set -o vi
+source "$dotdir/aliases.zsh"
+source "$dotdir/key-bindings.zsh"
+source "$dotdir/vi-mode.zsh"
+
+
 if [[ "$(uname)" == "Darwin" ]]; then
     source ~/.osx
 fi
+
 source /usr/local/bin/virtualenvwrapper.sh
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -26,7 +31,5 @@ else
 fi
 
 source $powerlinedir
-alias gitgraph='git log --graph --oneline --all'
 
-export WUNDERLIST_ACCESS_TOKEN='edeb2271fe6793d1a94aa8d67cf81aa7754a35794067017335f9ef8cae13'
-export WUNDERLIST_CLIENT_ID='6d8fbbde4fcf3153e491'
+
