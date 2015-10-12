@@ -22,6 +22,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'fmoralesc/molokayo'
 Plugin 'tpope/vim-surround'
 Plugin 'klen/rope-vim'
+Plugin 'Tagbar'
+Plugin 'EasyMotion'
+Plugin 'ctrlp.vim'
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'godlygeek/tabular'
 call vundle#end()
 
 "  Personal settings
@@ -54,7 +60,8 @@ set shortmess=atI
 set title
 set showcmd
 set scrolloff=3
-
+" For when I use FISH shells
+set shell=bash
 
 " Syntastic
 let g:syntastic_error_symbol='>>'
@@ -80,14 +87,20 @@ nnoremap <silent> N N:call HLNext(0.4)<cr>
 nnoremap <silent><Space> :nohlsearch<Bar>:echo<CR>
 nnoremap ; :
 inoremap jj <C-c>
-nnoremap <leader>ls :NERDTree<CR>
+nnoremap <leader>pdb :call Pdb()<CR>
+
+" NERDTree mappings
+nnoremap <leader>nt :NERDTreeToggle<CR>
 
 " Rope mappings
-nnoremap <leader>d :RopeGotoDefinition<CR>
-nnoremap <leader>cw :RopeRename<CR>
-nnoremap <leader>oo :RopeOrganizeImports<CR>
-vnoremap <leader>ev :RopeExtractVariable<CR>
-vnoremap <leader>em :RopeExtractMethod<CR>
+nnoremap <leader>rgd :RopeGotoDefinition<CR>
+nnoremap <leader>rr :RopeRename<CR>
+nnoremap <leader>roo :RopeOrganizeImports<CR>
+vnoremap <leader>rev :RopeExtractVariable<CR>
+vnoremap <leader>rem :RopeExtractMethod<CR>
+
+" Tagbar mappings
+nnoremap <leader>tt :TagbarToggle<CR>
 
 " Custom color settings
 colorscheme molokayo
@@ -109,6 +122,10 @@ function! StripWhitespace()
     call setreg('/', old_query)
 endfunction
 
+function! Pdb()
+    execute "normal oimport ipdb; ipdb.set_trace()"
+endfunction
+
 " Call molokayo color on startup
 autocmd vimenter * :color molokayo
 " Treat JSON with JS syntax
@@ -122,3 +139,5 @@ augroup reload_vimrc " {
     autocmd BufWritePost ~/.vimrc source ~/.vimrc
     redraw
 augroup END " }
+
+
