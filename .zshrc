@@ -1,11 +1,12 @@
 dotdir=$(dirname $(readlink ~/.zshrc))
 
-echo $dotdir
 # Customize to your needs...
 source "$dotdir/aliases.zsh"
 source "$dotdir/key-bindings.zsh"
 source "$dotdir/vi-mode.zsh"
 source "$dotdir/functions.zsh"
+source "$dotdir/options.zsh"
+
 
 if [[ "$(uname)" == "Darwin" ]]; then
     source ~/.osx

@@ -1,0 +1,10 @@
+setopt NO_HUP
+setopt NO_LIST_BEEP
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt CORRECT
+setopt PROMPT_SUBST
+setopt COMPLETE_IN_WORD
+setopt IGNORE_EOF
+setopt APPEND_HISTORY
+setopt complete_aliases
