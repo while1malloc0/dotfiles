@@ -1,22 +1,11 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+dotdir=$(dirname $(readlink ~/.zshrc))
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-dotdir=$(dirname $0:A)
-
+echo $dotdir
 # Customize to your needs...
 source "$dotdir/aliases.zsh"
 source "$dotdir/key-bindings.zsh"
 source "$dotdir/vi-mode.zsh"
-
+source "$dotdir/functions.zsh"
 
 if [[ "$(uname)" == "Darwin" ]]; then
     source ~/.osx

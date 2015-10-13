@@ -1,7 +1,7 @@
 "  Preamble to Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 
 "  Installed Plugins
 call vundle#begin()
@@ -62,6 +62,7 @@ set showcmd
 set scrolloff=3
 set noswapfile
 set nobackup
+set nowritebackup
 
 " Syntastic
 let g:syntastic_error_symbol='>>'
