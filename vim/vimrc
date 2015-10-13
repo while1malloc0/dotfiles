@@ -1,0 +1,40 @@
+"  Preamble to Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+
+"  Installed Plugins
+call vundle#begin()
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'gmarik/vundle'
+Plugin 'scrooloose/syntastic'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'powerline/powerline',  {'rtp': 'powerline/bindings/vim/'}
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'fmoralesc/molokayo'
+Plugin 'tpope/vim-surround'
+Plugin 'klen/rope-vim'
+Plugin 'Tagbar'
+Plugin 'EasyMotion'
+Plugin 'ctrlp.vim'
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'godlygeek/tabular'
+call vundle#end()
+
+"  Personal settings
+syntax on
+filetype indent plugin on
+
+let optionsdir='~/.vim/options/'
+
+for fpath in split(globpath(optionsdir, '*.vim'), '\n')
+    exe 'source' fpath
+endfor
