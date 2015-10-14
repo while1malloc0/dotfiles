@@ -1,6 +1,5 @@
 dotdir=$(dirname $(readlink ~/.zshrc))
 
-# Customize to your needs...
 source "$dotdir/aliases.zsh"
 source "$dotdir/key-bindings.zsh"
 source "$dotdir/vi-mode.zsh"
@@ -12,7 +11,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
     source ~/.osx
 fi
 
+# Virtual env wrapper
 source /usr/local/bin/virtualenvwrapper.sh
+
+# Autoenv
+source /usr/local/opt/autoenv/activate.sh
 
 if [[ "$(uname)" == "Darwin" ]]; then
     powerlinedir='/usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh'
