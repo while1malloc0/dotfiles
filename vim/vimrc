@@ -5,8 +5,8 @@ set rtp+=~/.vim/bundle/vundle/
 
 "  Installed Plugins
 call vundle#begin()
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'gmarik/vundle'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'sjl/gundo.vim'
@@ -27,6 +27,8 @@ Plugin 'ctrlp.vim'
 Plugin 'Rip-Rip/clang_complete'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'fatih/vim-go'
+Plugin 'benmills/vimux'
 call vundle#end()
 
 "  Personal settings

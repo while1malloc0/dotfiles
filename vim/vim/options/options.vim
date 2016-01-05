@@ -11,6 +11,7 @@ set number
 set ttyfast
 set gdefault
 set noeol
+set backspace=2
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists('&undodir')

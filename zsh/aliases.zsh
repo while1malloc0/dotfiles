@@ -2,16 +2,20 @@
 alias cls='clear; ls'
 alias ll='ls -alGh'
 alias ls='ls -Gh'
+alias l='ll'
 alias lsg='ls | grep'
 alias less='less -r'
 alias tf='tail -f'
 alias reload!='. ~/.zshrc'
 alias df='df -h'
+alias ..='cd ..'
 
 # Git
 alias git-up='git-up'
 alias git-graph='git log --graph --oneline --all'
 alias gpom='git push origin master'
+alias gpos='git push origin staging'
+alias gpod='git push origin develop'
 
 # IP
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
