@@ -1,42 +1,23 @@
-"  Preamble to Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
+"  Plugins
+call plug#begin()
+Plug 'tpope/vim-rails'
+Plug 'Autoclose'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+Plug 'thoughtbot/vim-rspec'
+call plug#end()
 
-"  Installed Plugins
-call vundle#begin()
-Plugin 'gmarik/vundle'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'sjl/gundo.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'powerline/powerline',  {'rtp': 'powerline/bindings/vim/'}
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'fmoralesc/molokayo'
-Plugin 'tpope/vim-surround'
-Plugin 'klen/rope-vim'
-Plugin 'Tagbar'
-Plugin 'EasyMotion'
-Plugin 'ctrlp.vim'
-Plugin 'Rip-Rip/clang_complete'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'fatih/vim-go'
-Plugin 'benmills/vimux'
-call vundle#end()
+"  Keybindings
+inoremap jj <Esc>
+nnoremap ; :
 
-"  Personal settings
+"  Other settings
+colorscheme solarized
 syntax on
 filetype indent plugin on
 
-let optionsdir='~/.vim/options/'
-
-for fpath in split(globpath(optionsdir, '*.vim'), '\n')
-    exe 'source' fpath
-endfor
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
