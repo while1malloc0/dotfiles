@@ -7,16 +7,48 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'thoughtbot/vim-rspec'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'matchit.zip'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'janko-m/vim-test'
 call plug#end()
 
-"  Keybindings
+let mapleader = " "
 inoremap jj <Esc>
 nnoremap ; :
+nnoremap <leader><leader> <c-^>
 
-"  Other settings
 colorscheme solarized
 syntax on
 filetype indent plugin on
+set number
+set numberwidth=5
+set backspace=2
+set nobackup
+set noswapfile
+set nowritebackup
+set laststatus=2
+set ruler
+set history=50
+set autowrite
+set incsearch
+set showcmd
+
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+set nojoinspaces
+set splitbelow
+set splitright
+set diffopt+=vertical
+
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
