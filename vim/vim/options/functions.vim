@@ -19,10 +19,9 @@ function! Pdb()
     execute "normal oimport ipdb; ipdb.set_trace()"
 endfunction
 
-" Call molokayo color on startup
-autocmd vimenter * :color molokayo
 " Treat JSON with JS syntax
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+
 " Close NERDTree if it's the only file
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTreeType') && b:NERDTreeType == 'primary') | q | endif
 

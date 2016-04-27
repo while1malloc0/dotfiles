@@ -30,4 +30,5 @@ set noswapfile
 set nobackup
 set nowritebackup
 set clipboard=unnamed
-colorscheme molokayo
+set backspace=2
+colorscheme railscasts

@@ -42,6 +42,3 @@ alias map='xargs -n1'
 # Wunderline
 alias t='wunderline add $1'
 alias 't?'='wunderline all'
-
-# Tmux
-alias tma='tmux attach -t $1'
