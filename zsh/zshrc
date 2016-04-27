@@ -21,7 +21,15 @@ function git_prompt() {
   fi
 }
 
-PROMPT="on %w at %t in %d: "
+function lprompt(){
+  if [[ $? == 0 ]]; then
+    echo "\e[32mon %w at %t in %d: " 
+  else
+    echo "\e[31mon %w at %t in %d: "
+  fi
+}
+
+PROMPT='$(lprompt)'
 RPROMPT='$(git_prompt)'
 export GOPATH='/Users/jturner/dev/golang/bin'
 export PATH=$PATH:$GOPATH
