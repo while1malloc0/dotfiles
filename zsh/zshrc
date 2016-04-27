@@ -47,4 +47,4 @@ export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source ~/.zsh/zsh-autosuggestions
