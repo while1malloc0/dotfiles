@@ -13,9 +13,15 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Autoenv
 source /usr/local/opt/autoenv/activate.sh
 
+autoload -U colors && colors
+
 function git_prompt() {
   if [[ $(git status 2>/dev/null) > 0 ]]; then
-   echo "on branch $(git rev-parse --abbrev-ref HEAD)" 
+    if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
+      echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}" 
+    else
+      echo "on branch $(git rev-parse --abbrev-ref HEAD)" 
+    fi 
   else
     echo ""
   fi
@@ -23,9 +29,9 @@ function git_prompt() {
 
 function lprompt(){
   if [[ $? == 0 ]]; then
-    echo "\e[32mon %w at %t in %d: " 
+    echo "%{$fg[green]%}on %w at %t in %d:%{$fg[reset_color]%} " 
   else
-    echo "\e[31mon %w at %t in %d: "
+    echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
   fi
 }
 
