@@ -63,6 +63,7 @@ set splitbelow
 set splitright
 set diffopt+=vertical
 set wildmode=list:longest,full
+set mouse=a
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
