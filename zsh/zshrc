@@ -7,22 +7,17 @@ source "$dotdir/functions.zsh"
 source "$dotdir/options.zsh"
 
 
-if [[ "$(uname)" == "Darwin" ]]; then
-    source ~/.osx
-fi
-
 # Virtual env wrapper
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Autoenv
 source /usr/local/opt/autoenv/activate.sh
 
-if [[ "$(uname)" == "Darwin" ]]; then
-    powerlinedir='/usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh'
-else
-    powerlinedir='/usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh'
-fi
+RPROMPT="$(git rev-parse --abbrev-ref HEAD)"
+PROMPT="in ${PWD/#$HOME/~} "
+export GOPATH='/Users/jturner/dev/golang/bin'
+export PATH=$PATH:$GOPATH
+export PATH="/usr/local/sbin:$PATH"
 
-source $powerlinedir
-
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

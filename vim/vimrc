@@ -17,6 +17,8 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'janko-m/vim-test'
+Plug 'nanotech/jellybeans.vim'
+Plug 'vim-scripts/Lucius'
 call plug#end()
 
 let mapleader = " "
@@ -24,10 +26,12 @@ inoremap jj <Esc>
 nnoremap ; :
 nnoremap <leader><leader> <c-^>
 
-colorscheme solarized
+colorscheme jellybeans
+set background=light
 syntax on
 filetype indent plugin on
 set number
+set relativenumber
 set numberwidth=5
 set backspace=2
 set nobackup
