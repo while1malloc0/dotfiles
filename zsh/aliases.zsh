@@ -11,7 +11,7 @@ alias df='df -h'
 alias ..='cd ..'
 
 # Git
-alias git-up='git-up'
+alias g='git'
 alias git-graph='git log --graph --oneline --all'
 alias gpom='git push origin master'
 alias gpos='git push origin staging'

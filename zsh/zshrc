@@ -7,12 +7,6 @@ source "$dotdir/functions.zsh"
 source "$dotdir/options.zsh"
 
 
-# Virtual env wrapper
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Autoenv
-source /usr/local/opt/autoenv/activate.sh
-
 autoload -U colors && colors
 
 function git_prompt() {
@@ -48,3 +42,8 @@ export PATH="/usr/local/sbin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Source completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+source /opt/boxen/env.sh
