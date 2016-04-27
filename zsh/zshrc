@@ -18,9 +18,14 @@ autoload -U colors && colors
 function git_prompt() {
   if [[ $(git status 2>/dev/null) > 0 ]]; then
     if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
-      echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}" 
+      prompt="%{$fg[green]%}on branch $(git rev-parse --abbrev-ref HEAD)" 
+      if [[ $(git diff origin/$(git rev-parse --abbrev-ref HEAD)) > 0 ]]; then
+        prompt="$prompt*"
+      fi
+      prompt=$prompt"%{$fg[reset_color]%}"
+      echo $prompt
     else
-      echo "on branch $(git rev-parse --abbrev-ref HEAD)" 
+      echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}" 
     fi 
   else
     echo ""
