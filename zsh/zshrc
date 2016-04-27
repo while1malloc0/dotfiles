@@ -13,8 +13,16 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Autoenv
 source /usr/local/opt/autoenv/activate.sh
 
-RPROMPT="$(git rev-parse --abbrev-ref HEAD)"
-PROMPT="in ${PWD/#$HOME/~} "
+function git_prompt() {
+  if [[ $(git status 2>/dev/null) > 0 ]]; then
+   echo "on branch $(git rev-parse --abbrev-ref HEAD)" 
+  else
+    echo ""
+  fi
+}
+
+PROMPT="on %w at %t in %d: "
+RPROMPT='$(git_prompt)'
 export GOPATH='/Users/jturner/dev/golang/bin'
 export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
