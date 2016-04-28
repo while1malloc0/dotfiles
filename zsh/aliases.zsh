@@ -10,13 +10,6 @@ alias reload!='. ~/.zshrc'
 alias df='df -h'
 alias ..='cd ..'
 
-# Git
-alias g='git'
-alias git-graph='git log --graph --oneline --all'
-alias gpom='git push origin master'
-alias gpos='git push origin staging'
-alias gpod='git push origin develop'
-
 # IP
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"

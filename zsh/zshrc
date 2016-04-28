@@ -12,7 +12,7 @@ autoload -U colors && colors
 function git_prompt() {
   if [[ $(git status 2>/dev/null) > 0 ]]; then
     if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
-      prompt="%{$fg[green]%}on branch $(git rev-parse --abbrev-ref HEAD)" 
+      prompt="%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)" 
       if [[ $(git diff origin/$(git rev-parse --abbrev-ref HEAD)) > 0 ]]; then
         prompt="$prompt*"
       fi
@@ -28,9 +28,19 @@ function git_prompt() {
 
 function lprompt(){
   if [[ $? == 0 ]]; then
-    echo "%{$fg[green]%}on %w at %t in %d:%{$fg[reset_color]%} " 
+    echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} " 
   else
     echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
+  fi
+}
+
+# No arguments: `git status`
+# With arguments: acts like `git`
+g() {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
   fi
 }
 
@@ -49,4 +59,9 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Betterment computer, so use boxen
 if [[ $(command -v boxen >/dev/null 2>&1)  > 0 ]]; then
   source /opt/boxen/env.sh
+fi
+
+# Betterment computer, use custom cd path
+if [[ $(whoami) == "jonathanturner" ]]; then
+  export CDPATH=".:~:~/src/better-core:~/my:~/Dropbox"
 fi

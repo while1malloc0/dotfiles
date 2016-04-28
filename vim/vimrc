@@ -40,7 +40,7 @@ nnoremap <leader><leader> <c-^>
 nnoremap <leader>tf :TestFile<cr>
 nnoremap <leader>tn :TestNearest<cr>
 
-colorscheme jellybeans
+colorscheme solarized
 set background=light
 syntax on
 filetype indent plugin on
