@@ -1,0 +1,27 @@
+
+[hub]
+protocol = https
+
+[core]
+excludesfile = /opt/boxen/config/git/gitignore
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
+[user]
+	name = John Turner
+	email = johnathan.turner@betterment.com
+[init]
+	templatedir = ~/.git_template
+[push]
+	default = simple
+[alias]
+  c = "commit -m "  
+  co = checkout
+  lc = local-checkout
+  hard-reset = "reset --hard head"
+  hr = hard-reset
+  p = "push"
+  nb = new-branch
+  ap = "add -p"
+  l = "log --oneline --pretty"
+  s = "status"
