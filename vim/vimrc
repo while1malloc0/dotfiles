@@ -27,6 +27,10 @@ Plug 'rking/ag.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'csexton/trailertrash.vim'
 Plug 'tpope/vim-dispatch'
+Plug 'snipMate'
+Plug 'SuperTab'
+Plug 'scrooloose/Syntastic'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 let mapleader = " "
@@ -64,6 +68,8 @@ set splitright
 set diffopt+=vertical
 set wildmode=list:longest,full
 set mouse=a
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
@@ -72,3 +78,16 @@ let g:ctrlp_use_caching = 0
 " Indent lines at l 2
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" YCM
+let g:ycm_collect_identifier_from_tags_files = 1
