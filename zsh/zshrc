@@ -46,4 +46,7 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Source completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-source /opt/boxen/env.sh
+# Betterment computer, so use boxen
+if [[ $USER == "jonathanturner" ]]; then
+  source /opt/boxen/env.sh
+fi
