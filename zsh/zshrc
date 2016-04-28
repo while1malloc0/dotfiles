@@ -47,6 +47,6 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Betterment computer, so use boxen
-if [[ $USER == "jonathanturner" ]]; then
+if [[ $(command -v boxen >/dev/null 2>&1)  > 0 ]]; then
   source /opt/boxen/env.sh
 fi
