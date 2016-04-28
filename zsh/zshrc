@@ -56,12 +56,10 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Source completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-# Betterment computer, so use boxen
-if [[ $(command -v boxen >/dev/null 2>&1)  > 0 ]]; then
-  source /opt/boxen/env.sh
-fi
+setopt auto_cd
 
 # Betterment computer, use custom cd path
 if [[ $(whoami) == "jonathanturner" ]]; then
-  export CDPATH=".:~:~/src/better-core:~/my:~/Dropbox"
+  source /opt/boxen/env.sh
+  cdpath=(. $HOME $HOME/src/better-core $HOME/my $HOME/Dropbox)
 fi

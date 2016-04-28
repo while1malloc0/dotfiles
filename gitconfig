@@ -15,7 +15,7 @@ helper = /opt/boxen/bin/boxen-git-credential
 [push]
 	default = simple
 [alias]
-  c = "commit -m "  
+  c = "commit -m"  
   co = checkout
   lc = local-checkout
   hard-reset = "reset --hard head"
