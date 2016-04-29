@@ -1,0 +1,11 @@
+set backspace=2
+set history=50
+set autowrite
+set incsearch
+
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+set nojoinspaces
+set mouse=a

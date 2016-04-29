@@ -1,93 +1,29 @@
+let mapleader = " "
+
+" Shamelessly copied from Chris Toomey
+" https://github.com/christoomey/dotfiles/blob/master/vim/vimrc
+
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.vim/' . a:directory . '/*'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+      execute 'source' config_file
+    endif
+  endfor
+endfunction
+
 "  Plugins
 call plug#begin()
-Plug 'tpope/vim-rails'
-Plug 'Raimondi/delimitMate'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'Raimondi/delimitMate'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
-Plug 'janko-m/vim-test'
-Plug 'nanotech/jellybeans.vim'
-Plug 'vim-scripts/Lucius'
-Plug 'rizzatti/dash.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tpope/vim-endwise'
-Plug 'rking/ag.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'csexton/trailertrash.vim'
-Plug 'tpope/vim-dispatch'
-Plug 'snipMate'
-Plug 'SuperTab'
-Plug 'scrooloose/Syntastic'
-Plug 'Valloric/YouCompleteMe'
+call s:SourceConfigFilesIn('rcplugins')
 call plug#end()
 
-let mapleader = " "
+filetype plugin indent on
 inoremap jj <Esc>
 nnoremap ; :
 nnoremap <leader><leader> <c-^>
-nnoremap <leader>tf :TestFile<cr>
-nnoremap <leader>tn :TestNearest<cr>
 
-colorscheme solarized
-set background=light
+
 syntax on
 filetype indent plugin on
-set number
-set relativenumber
-set numberwidth=5
-set backspace=2
-set nobackup
-set noswapfile
-set nowritebackup
-set laststatus=2
-set ruler
-set history=50
-set autowrite
-set incsearch
-set showcmd
+call s:SourceConfigFilesIn('rcfiles')
 
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-set nojoinspaces
-set splitbelow
-set splitright
-set diffopt+=vertical
-set wildmode=list:longest,full
-set mouse=a
-set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menuone
-
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
-let g:ctrlp_use_caching = 0
-
-" Indent lines at l 2
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" YCM
-let g:ycm_collect_identifier_from_tags_files = 1

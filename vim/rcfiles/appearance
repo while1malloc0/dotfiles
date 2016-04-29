@@ -1,0 +1,12 @@
+colorscheme solarized
+set background=light
+set number
+set relativenumber
+set numberwidth=5
+set ruler
+set laststatus=2
+set splitbelow
+set splitright
+set diffopt+=vertical
+set wildmode=list:longest,full
+set showcmd
