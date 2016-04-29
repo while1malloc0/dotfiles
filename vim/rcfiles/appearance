@@ -10,3 +10,5 @@ set splitright
 set diffopt+=vertical
 set wildmode=list:longest,full
 set showcmd
+set ttyfast
+set lazyredraw
