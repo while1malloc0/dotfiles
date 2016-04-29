@@ -22,6 +22,7 @@ helper = /opt/boxen/bin/boxen-git-credential
   hr = hard-reset
   p = "push"
   nb = new-branch
+  a = "add"
   ap = "add -p"
   l = "log --oneline --pretty"
   s = "status"
