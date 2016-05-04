@@ -12,3 +12,7 @@ set wildmode=list:longest,full
 set showcmd
 set ttyfast
 set lazyredraw
+set statusline="%y %= %l"
+set cursorline
+set cursorcolumn
+set hlsearch

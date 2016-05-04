@@ -9,3 +9,7 @@ set shiftround
 set expandtab
 set nojoinspaces
 set mouse=a
+
+set clipboard=unnamed
+
+nnoremap <Space> :noh<CR>

@@ -12,15 +12,15 @@ autoload -U colors && colors
 function git_prompt() {
   if [[ $(git status 2>/dev/null) > 0 ]]; then
     if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
-      prompt="%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)" 
+      prompt="%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)"
       if [[ $(git diff origin/$(git rev-parse --abbrev-ref HEAD)) > 0 ]]; then
         prompt="$prompt*"
       fi
       prompt=$prompt"%{$fg[reset_color]%}"
       echo $prompt
     else
-      echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}" 
-    fi 
+      echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
+    fi
   else
     echo ""
   fi
@@ -28,7 +28,7 @@ function git_prompt() {
 
 function lprompt(){
   if [[ $? == 0 ]]; then
-    echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} " 
+    echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
   else
     echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
   fi
@@ -61,5 +61,5 @@ setopt auto_cd
 # Betterment computer, use custom cd path
 if [[ $(whoami) == "jonathanturner" ]]; then
   source /opt/boxen/env.sh
-  cdpath=(. $HOME $HOME/src/better-core $HOME/my $HOME/Dropbox)
+  cdpath=(. $HOME $HOME/src/better-core $HOME/src/ $HOME/my $HOME/Dropbox)
 fi
