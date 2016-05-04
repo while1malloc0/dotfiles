@@ -13,3 +13,8 @@ set mouse=a
 set clipboard=unnamed
 
 nnoremap <Space> :noh<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h

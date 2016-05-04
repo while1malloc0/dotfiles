@@ -9,6 +9,8 @@ alias tf='tail -f'
 alias reload!='. ~/.zshrc'
 alias df='df -h'
 alias ..='cd ..'
+alias v='vim'
+alias tm='tmux'
 
 # IP
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -31,7 +33,3 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # Decent map function
 # ex: ls | map cat
 alias map='xargs -n1'
-
-# Wunderline
-alias t='wunderline add $1'
-alias 't?'='wunderline all'
