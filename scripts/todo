@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ $1 ]]; then
+  cd ~/Dropbox/todo
+  echo $1 >> inbox
+else
+  cd ~/Dropbox/todo
+  vim inbox
+fi

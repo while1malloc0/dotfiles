@@ -46,10 +46,10 @@ g() {
 
 PROMPT='$(lprompt)'
 RPROMPT='$(git_prompt)'
-export GOPATH='/Users/jturner/dev/golang/bin'
+export GOPATH="$HOME/dev/golang/bin"
 export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$PATH:~/my/scripts"
+export PATH="$PATH:$HOME/my/scripts"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
