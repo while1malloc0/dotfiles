@@ -8,7 +8,7 @@ au FileType ruby setl sw=2 sts=2 ts=2 tw=80 " Two spaces per tab
 au FileType ebury setl setl sw=2 sts=2 ts=2 " Two spaces per tab"
 
 " Surround with a let block
-autocmd FileType ruby let @l = "bi:jjyss)IletjjA{ "
+autocmd FileType ruby let @l = "bi:jjyss)IletjjA { "
 
 " Surround with a factory girl block
-autocmd FileType ruby let @f = "byiwi:jjyss)IletjjA{ FactoryGirl.create(:jjpajj"
+autocmd FileType ruby let @f = "byiwi:jjyss)IletjjA { FactoryGirl.create(:jjpajj"
