@@ -1,0 +1,35 @@
+function! ExtractVariable()
+  echohl String | let var_name = input("Variable name: ") | echohl None
+  normal! gv
+
+  exec "normal c" . var_name
+
+  if &ft == 'javascript'
+    exec "normal! Ovar" . var_name . " = "
+  elseif &ft == 'vim'
+    exec "normal! Olet" . var_name . " = "
+  else
+    exec "normal! O" . var_name . " = "
+  endif
+
+  normal! $p
+endfunction
+
+" Only works with ruby at the moment
+function! ExtractMethod()
+  echohl String | let method_name = input("Method name with args: ") | echohl None
+
+  normal! gv
+
+  exec "normal! c" . method_name
+
+  " mark and jump to the next open paragraph
+  exec "normal! mm/end\<cr>o"
+  exec "normal! odef " . method_name
+  exec "normal! o"
+  normal! $p==
+  exec "normal! oend\<cr>\<esc>'m"
+endfunction
+
+vnoremap <leader>g :call ExtractMethod()<cr>
+vnoremap <leader>ev :call ExtractVariable()<cr>
