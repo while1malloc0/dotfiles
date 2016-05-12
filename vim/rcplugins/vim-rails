@@ -1,1 +1,1 @@
-Plug 'tpope/vim-rails', { 'on': 'AV' }
+Plug 'tpope/vim-rails'
