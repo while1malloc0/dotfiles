@@ -27,4 +27,7 @@ syntax on
 filetype indent plugin on
 call s:SourceConfigFilesIn('rcfiles')
 
-let g:ruby_path = '/opt/boxen/rbenv/shims'
+
+if $USER == 'jonathanturner'
+  let g:ruby_path = '/opt/boxen/rbenv/shims'
+endif
