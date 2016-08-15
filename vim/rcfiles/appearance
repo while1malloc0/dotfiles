@@ -1,6 +1,7 @@
 "colorscheme solarized
 "colorscheme railscasts
-colorscheme monokai
+"colorscheme monokai
+colorscheme darcula
 set background=dark
 set number
 set relativenumber
