@@ -1,5 +1,7 @@
-colorscheme solarized
-set background=light
+"colorscheme solarized
+"colorscheme railscasts
+colorscheme monokai
+set background=dark
 set number
 set relativenumber
 set numberwidth=5
