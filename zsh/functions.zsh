@@ -6,6 +6,19 @@ brew-up(){
     brew doctor;
 }
 
+nb() {
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref head)
+  git checkout -b johnt/$CURRENT_BRANCH/$1
+}
+
+pr() {
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref head)
+  PARENT_BRANCH=echo $CURRENT_BRANCH | cut -d '/' -f2
+  REPO_NAME=$(basename `git rev-parse --show-toplevel`)
+  git push -u origin $CURRENT_BRANCH
+  open https://github.com/Betterment/$REPO_NAME/compare/$PARENT...$CURRENT_BRANCH?expand=1
+}
+
 watch(){
   CTIME=$(stat -f "%m" scratch);
   FILE=$1
