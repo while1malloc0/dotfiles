@@ -13,10 +13,10 @@ nb() {
 
 pr() {
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref head)
-  PARENT_BRANCH=echo $CURRENT_BRANCH | cut -d '/' -f2
+  PARENT_BRANCH=$(echo $CURRENT_BRANCH | cut -d '/' -f2)
   REPO_NAME=$(basename `git rev-parse --show-toplevel`)
   git push -u origin $CURRENT_BRANCH
-  open https://github.com/Betterment/$REPO_NAME/compare/$PARENT...$CURRENT_BRANCH?expand=1
+  open "https://github.com/Betterment/$REPO_NAME/compare/$PARENT_BRANCH...$CURRENT_BRANCH?expand=1"
 }
 
 watch(){

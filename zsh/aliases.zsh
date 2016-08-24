@@ -33,3 +33,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # Decent map function
 # ex: ls | map cat
 alias map='xargs -n1'
+
+# Find and edit
+alias fe='nvim $(fzf)'
