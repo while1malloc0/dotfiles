@@ -1,3 +1,0 @@
-Plug 'christoomey/vim-tmux-runner'
-
-nnoremap <leader>irb call VtrSendCommand('rails c')

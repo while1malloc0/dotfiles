@@ -1,6 +1,3 @@
 Plug 'thoughtbot/vim-rspec'
 
 let g:rspec_command = 'call VtrSendCommand("rspec {spec}")'
-
-nnoremap <leader>tn :call RunNearestSpec()<CR>
-nnoremap <leader>tf :call RunCurrentSpecFile()<CR>

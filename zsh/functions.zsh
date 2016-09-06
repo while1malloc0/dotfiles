@@ -40,3 +40,16 @@ watch(){
   done
 }
 
+backmerge() {
+  echo "---Refreshing repository---"
+  git up && \
+  echo "---Backmerging stage---"
+  git checkout stage && \
+  git merge master && \
+  git push && \
+  echo "---Backmerging develop---"
+  git checkout develop && \
+  git merge stage && \
+  git push
+  echo "---Done!---"
+}
