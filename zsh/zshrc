@@ -64,3 +64,5 @@ if [[ $(whoami) == "jonathanturner" ]]; then
   source /opt/boxen/env.sh
   cdpath=(. $HOME $HOME/src/better-core $HOME/src/ $HOME/my $HOME/Dropbox)
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

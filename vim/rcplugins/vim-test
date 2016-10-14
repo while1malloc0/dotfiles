@@ -1,6 +1,6 @@
 Plug 'janko-m/vim-test'
 
-let test#strategy = "neovim"
+let test#strategy = "vtr"
 
 nnoremap <leader>tn :TestNearest<cr>
 nnoremap <leader>ta :TestFile<cr>

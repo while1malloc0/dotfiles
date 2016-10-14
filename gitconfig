@@ -26,3 +26,7 @@ helper = /opt/boxen/bin/boxen-git-credential
   ap = "add -p"
   l = "log --oneline --pretty"
   s = "status"
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

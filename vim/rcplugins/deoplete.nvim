@@ -1,8 +1,0 @@
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'fishbullet/deoplete-ruby'
-
-let g:deoplete#enable_at_startup = 1
