@@ -1,0 +1,14 @@
+POSERO>> set filetype=ruby
+POSERO>> let b:posero_fake_type = '\v(.*)'
+POSERO>> let b:posero_push_all = 1
+
+class VDiff
+
+  def calculate(original, modified)
+    original.each do |pixel|
+      pixel.each do |value|
+        something
+      end
+    end
+  end
+end

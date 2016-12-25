@@ -1,0 +1,3 @@
+Plug 'alfredodeza/posero.vim'
+
+let g:posero_default_mappings = 1

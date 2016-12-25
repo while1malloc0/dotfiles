@@ -2,6 +2,29 @@ Plug 'janko-m/vim-test'
 
 let test#strategy = "vtr"
 
-nnoremap <leader>tn :TestNearest<cr>
-nnoremap <leader>ta :TestFile<cr>
+nnoremap <F8> :TestNearest<cr>
+nnoremap <F7> :TestFile<cr>
+
+" automagical directory changing for big repos and ruby testing
+function! s:SetVimTestRubyProjectRoot()
+  let parts = split(expand("%:p"), "/")
+  let test_dir_idx = index(parts, "spec")
+
+  if test_dir_idx < 0
+    let test_dir_idx = index(parts, "test")
+  endif
+
+  if test_dir_idx < 0
+    return
+  endif
+
+  let root_parts = parts[0:test_dir_idx-1]
+  let g:test#project_root = "/".join(root_parts, "/")
+endfunction
+
+function! s:ResetVimTestRubyProjectRoot()
+  unlet g:test#project_root
+endfunction
+autocmd BufEnter *_spec.rb,*_test.rb silent! call s:SetVimTestRubyProjectRoot()
+autocmd BufLeave *_spec.rb,*_test.rb silent! call s:ResetVimTestRubyProjectRoot()
 

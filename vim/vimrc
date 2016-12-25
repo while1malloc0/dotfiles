@@ -20,8 +20,6 @@ call plug#end()
 filetype plugin indent on
 inoremap jj <Esc>
 nnoremap ; :
-nnoremap <leader><leader> <c-^>
-
 
 syntax on
 filetype indent plugin on

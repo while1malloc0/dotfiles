@@ -53,3 +53,12 @@ backmerge() {
   git push
   echo "---Done!---"
 }
+
+# Find and replace. Depends on ripgrep
+fr() {
+  dir=$1
+  find_this=$2
+  replace_with_this=$3
+
+  rg -l $find_this $dir | xargs -n1 sed -i '' s/$find_this/$replace_with_this/g
+}

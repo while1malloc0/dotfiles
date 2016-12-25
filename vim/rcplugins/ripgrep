@@ -1,0 +1,18 @@
+Plug 'jremmen/vim-ripgrep'
+
+let g:rg_derive_root=1
+
+function! FindDef()
+  if &filetype ==? "ruby"
+    let deftype = "def"
+  elseif &filetype ==? "javascript"
+    let deftype = "function"
+  else
+    let deftype = ""
+  endif
+
+  let cmd = "\"" . deftype . " " . expand("<cword>") . "\""
+  execute "Rg " . cmd
+endfunction
+
+nnoremap fd :call FindDef()<cr>

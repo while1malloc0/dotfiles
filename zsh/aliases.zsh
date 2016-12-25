@@ -11,6 +11,9 @@ alias df='df -h'
 alias ..='cd ..'
 alias v='vim'
 alias tm='tmux'
+alias h='history'
+alias cl='clear'
+alias sc='$(history | cut -c 8- | fzf)'
 
 # IP
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -36,3 +39,8 @@ alias map='xargs -n1'
 
 # Find and edit
 alias fe='vim $(fzf)'
+
+# Select git branch
+alias gsb='git checkout $(git branch | fzf)'
+# Delete selected git branch
+alias gsd!='git delete-branch $(git branch | grep -v "master$" | grep -v "stage$" | fzf)'

@@ -26,12 +26,24 @@ function git_prompt() {
   fi
 }
 
+function git_prompt_fast() {
+  if [[ $(git status 2>/dev/null) > 0 ]]; then
+    echo "%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
+  else
+    echo ""
+  fi
+}
+
 function lprompt(){
   if [[ $? == 0 ]]; then
     echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
   else
     echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
   fi
+}
+
+function lprompt_fast(){
+  echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
 }
 
 # No arguments: `git status`
@@ -44,8 +56,8 @@ g() {
   fi
 }
 
-PROMPT='$(lprompt)'
-RPROMPT='$(git_prompt)'
+PROMPT='$(lprompt_fast)'
+RPROMPT='$(git_prompt_fast)'
 export GOPATH="$HOME/dev/golang/bin"
 export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
@@ -66,3 +78,4 @@ if [[ $(whoami) == "jonathanturner" ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
