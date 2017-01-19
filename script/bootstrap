@@ -1,0 +1,88 @@
+#!/bin/bash
+
+set -e
+
+check_directory() {
+  if ! [[ $PWD = *dotfiles ]] ; then
+    echo "This file is meant to be run from the dotfiles directory. Please cd there and try again."
+    exit 1
+  fi
+}
+
+install_vim_plug () {
+  echo "Installing vim plug..."
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim > /dev/null 2>&1
+}
+
+prereq_command (){
+  if [[ $(uname) == "Linux" ]]; then
+    sudo apt-get update > /dev/null 2>&1
+  else
+    if ! [[ -d /usr/local/Cellar ]]; then
+      install_homebrew
+    fi
+  fi
+}
+
+install_package() {
+  echo "Installing package $1"
+  if [[ $(uname) == "Linux" ]]; then
+    sudo apt-get install -y $1 > /dev/null 2>&1
+  else
+    brew install $1 > /dev/null 2>&1
+  fi
+}
+
+install_homebrew() {
+  echo "Installing Homebrew"
+  /usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+}
+
+check_directory
+
+# Prerequisites, install/update package manager
+echo "[1/4] Updating package manager..."
+prereq_command
+
+# Install packages
+echo "[2/4] Installing packages..."
+for package in $(cat package_list); do
+  install_package $package
+done
+
+# Link files
+echo "[3/4] Symlinking dotfiles..."
+if ! [[ -f ~/.zshrc ]]; then
+  ln -s $(pwd)/zsh/zshrc ~/.zshrc
+fi
+
+if ! [[ -f ~/.vimrc ]]; then
+  ln -s $(pwd)/vim/vimrc ~/.vimrc
+fi
+
+if ! [[ -d ~/.vim ]]; then
+  mkdir -p ~/.vim
+fi
+
+if ! [[ -d ~/.vim/rcfiles ]]; then
+  ln -s $PWD/vim/rcfiles ~/.vim/rcfiles
+fi
+
+if ! [[ -d ~/.vim/rcplugins ]]; then
+  ln -s $PWD/vim/rcplugins ~/.vim/rcplugins
+fi
+
+if ! [[ -f ~/.tmux.conf ]]; then
+  ln -s $PWD/tmux.conf ~/.tmux.conf
+fi
+
+echo "[4/4] Setting up vim... You'll might need to confirm starting Vim"
+if ! [[ -f ~/.vim/autoload/plug.vim ]]; then
+  install_vim_plug
+fi
+
+vim +PlugInstall +qall
+
+echo "Done! You're all set. Go make something awesome."
+exit 0
