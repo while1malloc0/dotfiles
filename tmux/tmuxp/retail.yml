@@ -9,6 +9,11 @@ windows:
       - vim
       - pane
       - pane
+  - notes:
+    window_name: notes
+    start_directory: $HOME/Dropbox/notes
+    panes:
+      - vim .
   - logs:
     window_name: logs
     start_directory: $HOME/src/better-core

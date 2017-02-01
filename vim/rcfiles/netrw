@@ -1,0 +1,6 @@
+let g:netrw_banner=0 " Get rid of annoying banner
+let g:netrw_browse_split=4 " Open in prior window
+let g:netrw_altv=1 " Open splits to the right
+let g:netrw_liststyle=3 " Open in tree view
+let g:netrw_list_hide=netrw_gitignore#Hide() " Ignore everything in the gitignore
+let g:netrw_list_hide.=',\(^|\s\s)\zs\.\S\+'
