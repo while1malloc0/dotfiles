@@ -1,0 +1,18 @@
+session_name: 'retail'
+windows:
+  - editor:
+    window_name: editor
+    focus: True
+    layout: main-vertical
+    start_directory: $HOME/src/better-core
+    panes:
+      - vim
+      - pane
+      - pane
+  - logs:
+    window_name: logs
+    start_directory: $HOME/src/better-core
+    layout: tiled
+    panes:
+      - start-tomcat
+      - tail -f retail/log/development.log
