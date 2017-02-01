@@ -62,6 +62,7 @@ export GOPATH="$HOME/dev/golang/bin"
 export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/my/scripts"
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # Get zsh functions (there's a better way to do this probably)
 # Mac
@@ -89,3 +90,5 @@ if [[ $(uname) == 'Darwin' ]]; then
 else
   source /usr/share/autojump/autojump.sh
 fi
+
+eval "$(rbenv init -)"
