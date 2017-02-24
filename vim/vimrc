@@ -25,9 +25,10 @@ syntax on
 filetype indent plugin on
 call s:SourceConfigFilesIn('rcfiles')
 
+"  Set path for `find` awesomeness
 set path+=**
 set wildmenu
 
-if $USER == 'jonathanturner'
-  let g:ruby_path += '/opt/boxen/rbenv/shims'
-endif
+"  Use the old regex engine, which for some reason works better at parsing
+"  ruby syntax highlighting
+set re=1

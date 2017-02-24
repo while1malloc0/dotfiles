@@ -44,3 +44,9 @@ alias fe='vim $(fzf)'
 alias gsb='git checkout $(git branch | fzf)'
 # Delete selected git branch
 alias gsd!='git delete-branch $(git branch | grep -v "master$" | grep -v "stage$" | fzf)'
+
+# If on mac, use macvim's rendering engine because terminal vim on mac normally
+# suuuuuuuucks at rendering
+if [ $(uname) = 'Darwin' ]; then
+  alias vim='mvim -v'
+fi
