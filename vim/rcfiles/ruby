@@ -15,4 +15,7 @@ augroup Ruby
 
   " Surround with a factory girl block
   autocmd FileType ruby let @f = "byiwi:jjyss)IletjjA { FactoryGirl.create(:jjpajj"
+
+  " Parsing included ruby files is slooooow, so disable that
+  autocmd FileType ruby set complete-=i
 augroup END
