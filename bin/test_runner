@@ -4,7 +4,7 @@ if ! [ -f test_commands ]; then
   mkfifo test_commands
 fi
 
-trap 'rm -rf test_commands; exit 0' SIGUP SIGINT SIGTERM
+trap 'rm -rf test_commands; exit 0' SIGHUP SIGINT SIGTERM
 
 while true; do
   sh -c $(cat test_commands)
