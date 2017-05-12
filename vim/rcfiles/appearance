@@ -1,7 +1,6 @@
 colorscheme solarized
 set background=light
 set number
-set relativenumber
 set numberwidth=5
 set ruler
 set laststatus=2

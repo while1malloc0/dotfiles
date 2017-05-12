@@ -1,13 +1,8 @@
-
 [hub]
 protocol = https
 
-[core]
-excludesfile = /opt/boxen/config/git/gitignore
-
 [credential]
-	helper = /opt/boxen/bin/boxen-git-credential
-	helper = /opt/boxen/bin/boxen-git-credential
+	helper = osxkeychain
 [user]
 	name = John Turner
 	email = johnathan.turner@betterment.com

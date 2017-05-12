@@ -9,42 +9,42 @@ source "$dotdir/options.zsh"
 
 autoload -U colors && colors
 
-function git_prompt() {
-  if [[ $(git status 2>/dev/null) > 0 ]]; then
-    if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
-      prompt="%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)"
-      if [[ $(git diff origin/$(git rev-parse --abbrev-ref HEAD)) > 0 ]]; then
-        prompt="$prompt*"
-      fi
-      prompt=$prompt"%{$fg[reset_color]%}"
-      echo $prompt
-    else
-      echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
-    fi
-  else
-    echo ""
-  fi
-}
+# function git_prompt() {
+#   if [[ $(git status 2>/dev/null) > 0 ]]; then
+#     if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
+#       prompt="%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)"
+#       if [[ $(git diff origin/$(git rev-parse --abbrev-ref HEAD)) > 0 ]]; then
+#         prompt="$prompt*"
+#       fi
+#       prompt=$prompt"%{$fg[reset_color]%}"
+#       echo $prompt
+#     else
+#       echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
+#     fi
+#   else
+#     echo ""
+#   fi
+# }
 
-function git_prompt_fast() {
-  if [[ $(git status 2>/dev/null) > 0 ]]; then
-    echo "%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
-  else
-    echo ""
-  fi
-}
+# function git_prompt_fast() {
+#   if [[ $(git status 2>/dev/null) > 0 ]]; then
+#     echo "%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
+#   else
+#     echo ""
+#   fi
+# }
 
-function lprompt(){
-  if [[ $? == 0 ]]; then
-    echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
-  else
-    echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
-  fi
-}
+# function lprompt(){
+#   if [[ $? == 0 ]]; then
+#     echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
+#   else
+#     echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
+#   fi
+# }
 
-function lprompt_fast(){
-  echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
-}
+# function lprompt_fast(){
+#   echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
+# }
 
 # No arguments: `git status`
 # With arguments: acts like `git`
@@ -56,8 +56,10 @@ g() {
   fi
 }
 
-PROMPT='$(lprompt_fast)'
-RPROMPT='$(git_prompt_fast)'
+# PROMPT='$(lprompt_fast)'
+# RPROMPT='$(git_prompt_fast)'
+autoload -U promptinit; promptinit
+prompt pure
 export GOPATH="$HOME/dev/golang/bin"
 export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
@@ -79,7 +81,9 @@ setopt auto_cd
 
 # Betterment computer, use custom cd path
 if [[ $(whoami) == "jonathanturner" ]]; then
-  source /opt/boxen/env.sh
+  # source /opt/boxen/env.sh
+  source ~/bootstrap/env.sh
+  export PATH="/usr/local/bin:$PATH"
   cdpath=(. $HOME $HOME/src/better-core $HOME/src/ $HOME/my $HOME/Dropbox)
 fi
 
@@ -90,5 +94,3 @@ if [[ $(uname) == 'Darwin' ]]; then
 else
   source /usr/share/autojump/autojump.sh
 fi
-
-eval "$(rbenv init -)"

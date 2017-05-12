@@ -11,7 +11,7 @@ alias df='df -h'
 alias ..='cd ..'
 alias v='vim'
 alias tm='tmux'
-alias h='history'
+alias h='eval "$(history | fzf | cut -c 8-)"'
 alias cl='clear'
 alias sc='$(history | cut -c 8- | fzf)'
 
@@ -44,6 +44,8 @@ alias fe='vim $(fzf)'
 alias gsb='git checkout $(git branch | fzf)'
 # Delete selected git branch
 alias gsd!='git delete-branch $(git branch | grep -v "master$" | grep -v "stage$" | fzf)'
+# Resolve merge conflicts in vim
+alias grc='vim -p $(git diff --name-only --diff-filter=U) +"/HEAD"'
 
 # If on mac, use macvim's rendering engine because terminal vim on mac normally
 # suuuuuuuucks at rendering
