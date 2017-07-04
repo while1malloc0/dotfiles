@@ -1,4 +1,4 @@
-dotdir=$(dirname $(readlink ~/.zshrc))
+dotdir="$(dirname "$(readlink ~/.zshrc)")"
 
 source "$dotdir/aliases.zsh"
 source "$dotdir/key-bindings.zsh"
@@ -6,45 +6,7 @@ source "$dotdir/vi-mode.zsh"
 source "$dotdir/functions.zsh"
 source "$dotdir/options.zsh"
 
-
 autoload -U colors && colors
-
-# function git_prompt() {
-#   if [[ $(git status 2>/dev/null) > 0 ]]; then
-#     if [[ $(echo $(git status) | grep "up-to-date") > 0 ]]; then
-#       prompt="%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)"
-#       if [[ $(git diff origin/$(git rev-parse --abbrev-ref HEAD)) > 0 ]]; then
-#         prompt="$prompt*"
-#       fi
-#       prompt=$prompt"%{$fg[reset_color]%}"
-#       echo $prompt
-#     else
-#       echo "%{$fg[red]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
-#     fi
-#   else
-#     echo ""
-#   fi
-# }
-
-# function git_prompt_fast() {
-#   if [[ $(git status 2>/dev/null) > 0 ]]; then
-#     echo "%{$fg[blue]%}on branch $(git rev-parse --abbrev-ref HEAD)%{$fg[reset_color]%}"
-#   else
-#     echo ""
-#   fi
-# }
-
-# function lprompt(){
-#   if [[ $? == 0 ]]; then
-#     echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
-#   else
-#     echo "%{$fg[red]%}on %w at %t in %d:%{$fg[reset_color]%} "
-#   fi
-# }
-
-# function lprompt_fast(){
-#   echo "%{$fg[blue]%}on %w at %t in %d:%{$fg[reset_color]%} "
-# }
 
 # No arguments: `git status`
 # With arguments: acts like `git`
@@ -56,10 +18,9 @@ g() {
   fi
 }
 
-# PROMPT='$(lprompt_fast)'
-# RPROMPT='$(git_prompt_fast)'
 autoload -U promptinit; promptinit
 prompt pure
+
 export GOPATH="$HOME/dev/golang/bin"
 export PATH=$PATH:$GOPATH
 export PATH="/usr/local/sbin:$PATH"
@@ -80,11 +41,16 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 setopt auto_cd
 
 # Betterment computer, use custom cd path
+# and set up some other stuff
 if [[ $(whoami) == "jonathanturner" ]]; then
-  # source /opt/boxen/env.sh
-  source ~/bootstrap/env.sh
   export PATH="/usr/local/bin:$PATH"
   cdpath=(. $HOME $HOME/src/better-core $HOME/src/ $HOME/my $HOME/Dropbox)
+  alias vpnconnect="osascript -e 'tell application \"Viscosity\" to connectall'"
+  source "$HOME/.bootstrap/env.sh"
+
+  ssh_to_instance() {
+    bssh "$(aws ec2 describe-instances --instance-id "$1" | jq -r '.Reservations[0].Instances[0].PrivateIpAddress')"
+  }
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -94,3 +60,8 @@ if [[ $(uname) == 'Darwin' ]]; then
 else
   source /usr/share/autojump/autojump.sh
 fi
+
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+find /usr/local/etc/bash_completion.d -type f -exec source {} \;
+

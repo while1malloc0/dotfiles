@@ -1,11 +1,3 @@
-brew-up(){
-    brew update;
-    brew upgrade $(brew outdated);
-    brew cleanup;
-    brew prune;
-    brew doctor;
-}
-
 nb() {
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref head)
   git checkout -b johnt/$CURRENT_BRANCH/$1
