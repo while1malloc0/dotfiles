@@ -64,4 +64,4 @@ fi
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 find /usr/local/etc/bash_completion.d -type f -exec source {} \;
-
+command -v aws_completer &> /dev/null && complete -C $(which aws_completer) aws
