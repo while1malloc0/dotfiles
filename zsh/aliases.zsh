@@ -20,7 +20,11 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 
 # Lock the screen (when going AFK)
-alias afk="pmset sleepnow"
+if [[ "$(uname)" == "Darwin" ]]; then
+  alias afk="pmset sleepnow"
+else
+  alias afk="i3lock"
+fi
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
