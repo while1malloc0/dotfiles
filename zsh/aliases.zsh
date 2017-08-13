@@ -9,9 +9,10 @@ alias tf='tail -f'
 alias reload!='. ~/.zshrc'
 alias df='df -h'
 alias ..='cd ..'
+alias vim="nvim"
 alias v='vim'
 alias tm='tmux'
-alias h='eval "$(history | fzf | cut -c 8-)"'
+alias h='history | fzf | cut -c 8- | pbcopy'
 alias cl='clear'
 alias sc='$(history | cut -c 8- | fzf)'
 
@@ -53,6 +54,6 @@ alias grc='vim -p $(git diff --name-only --diff-filter=U) +"/HEAD"'
 
 # If on mac, use macvim's rendering engine because terminal vim on mac normally
 # suuuuuuuucks at rendering
-if [ $(uname) = 'Darwin' ]; then
-  alias vim='mvim -v'
-fi
+# if [ $(uname) = 'Darwin' ]; then
+#   alias vim='mvim -v'
+# fi

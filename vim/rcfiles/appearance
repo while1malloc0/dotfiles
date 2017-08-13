@@ -1,5 +1,5 @@
-colorscheme solarized
-set background=light
+colorscheme toothpaste
+" set background=light
 set number
 set numberwidth=5
 set ruler
@@ -11,12 +11,11 @@ set wildmode=list:longest,full
 set showcmd
 set ttyfast
 set statusline="%y %= %l"
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 set hlsearch
 " Prevent Vim from clearing the scroll buffer when you run commands
 set t_ti= t_te=
-set cursorline
 set cmdheight=1
 set switchbuf=useopen
 set showtabline=2
