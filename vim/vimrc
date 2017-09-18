@@ -48,6 +48,11 @@ call plug#end()
 filetype plugin indent on
 inoremap jj <Esc>
 nnoremap ; :
+
+" ===== DEOPLETE =====
+let g:deoplete#enable_at_startup = 1
+
+" ===== FZF =====
 nnoremap <C-p> :FZF<cr>
 
 " ===== POSERO =====
