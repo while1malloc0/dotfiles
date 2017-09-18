@@ -1,8 +1,0 @@
-runtime macros/matchit.vim
-
-autocmd FileWritePre * TrailerTrim
-autocmd FileAppendPre * TrailerTrim
-autocmd BufWritePre * TrailerTrim
-autocmd FilterWritePre * TrailerTrim
-
-set tags+=~/src/better-core/tags

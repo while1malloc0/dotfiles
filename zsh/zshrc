@@ -38,13 +38,10 @@ export PATH="$PATH:$HOME/.cargo/bin"
 # Source completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-setopt auto_cd
-
 # Betterment computer, use custom cd path
 # and set up some other stuff
 if [[ $(whoami) == "jonathanturner" ]]; then
   export PATH="/usr/local/bin:$PATH"
-  cdpath=(. $HOME $HOME/src/better-core $HOME/src/ $HOME/my $HOME/Dropbox)
   alias vpnconnect="osascript -e 'tell application \"Viscosity\" to connectall'"
   source "$HOME/.bootstrap/env.sh"
 
@@ -71,3 +68,6 @@ if [ -f '/tmp/google-cloud-sdk/path.zsh.inc' ]; then source '/tmp/google-cloud-s
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/tmp/google-cloud-sdk/completion.zsh.inc' ]; then source '/tmp/google-cloud-sdk/completion.zsh.inc'; fi
+
+# added by travis gem
+[ -f /Users/jonathanturner/.travis/travis.sh ] && source /Users/jonathanturner/.travis/travis.sh

@@ -1,3 +1,0 @@
-Plug 'thoughtbot/vim-rspec'
-
-let g:rspec_command = 'call VtrSendCommand("rspec {spec}")'

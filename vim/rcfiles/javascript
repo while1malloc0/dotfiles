@@ -1,2 +1,0 @@
-au BufRead,BufNewFile *.json set filetype=json
-au FileType javascript setl sw=4 sts=4 tw=80

@@ -1,8 +1,5 @@
 let mapleader = " "
 
-" Shamelessly copied from Chris Toomey
-" https://github.com/christoomey/dotfiles/blob/master/vim/vimrc
-
 function! s:SourceConfigFilesIn(directory)
   let directory_splat = '~/.vim/' . a:directory . '/*'
   for config_file in split(glob(directory_splat), '\n')
@@ -14,16 +11,235 @@ endfunction
 
 "  Plugins
 call plug#begin()
-call s:SourceConfigFilesIn('rcplugins')
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Yggdroot/indentLine'
+Plug 'airblade/vim-gitgutter'
+Plug 'alfredodeza/posero.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'csexton/trailertrash.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go'
+Plug 'hashivim/vim-terraform'
+Plug 'janko-m/vim-test'
+Plug 'jiangmiao/auto-pairs'
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'pearofducks/ansible-vim'
+Plug 'scrooloose/Syntastic'
+Plug 'sickill/vim-pasta'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 filetype plugin indent on
 inoremap jj <Esc>
 nnoremap ; :
+nnoremap <C-p> :FZF<cr>
 
-syntax on
-filetype indent plugin on
+" ===== POSERO =====
+let g:posero_default_mappings = 1
+
+" ===== AIRLINE =====
+let g:airline_theme='luna'
+
+" ===== VIM-TEST =====
+let g:rspec_command = 'call VtrSendCommand("rspec {spec}")'
+let test#strategy = "vtr"
+nnoremap <F8> :TestNearest<cr>
+nnoremap <F7> :TestFile<cr>
+
+" automagical directory changing for big repos and ruby testing
+function! s:SetVimTestRubyProjectRoot()
+  let parts = split(expand("%:p"), "/")
+  let test_dir_idx = index(parts, "spec")
+
+  if test_dir_idx < 0
+    let test_dir_idx = index(parts, "test")
+  endif
+
+  if test_dir_idx < 0
+    return
+  endif
+
+  let root_parts = parts[0:test_dir_idx-1]
+  let g:test#project_root = "/".join(root_parts, "/")
+endfunction
+
+function! s:ResetVimTestRubyProjectRoot()
+  unlet g:test#project_root
+endfunction
+autocmd BufEnter *_spec.rb,*_test.rb silent! call s:SetVimTestRubyProjectRoot()
+autocmd BufLeave *_spec.rb,*_test.rb silent! call s:ResetVimTestRubyProjectRoot()
+
+" ===== RIPGREP =====
+let g:rg_derive_root=1
+
+function! FindDef()
+  if &filetype ==? "ruby"
+    let deftype = "def"
+  elseif &filetype ==? "javascript"
+    let deftype = "function"
+  else
+    let deftype = ""
+  endif
+
+  let cmd = "\"" . deftype . " " . expand("<cword>") . "\""
+  execute "Rg " . cmd
+endfunction
+
+nnoremap fd :call FindDef()<cr>
+
 call s:SourceConfigFilesIn('rcfiles')
+
+" ===== APPEARANCE =====
+colorscheme toothpaste
+set relativenumber
+set number
+set numberwidth=5
+set ruler
+set laststatus=2
+set splitbelow
+set splitright
+set diffopt+=vertical
+set wildmode=list:longest,full
+set showcmd
+set ttyfast
+set statusline="%y %= %l"
+set hlsearch
+" Prevent Vim from clearing the scroll buffer when you run commands
+set t_ti= t_te=
+set cmdheight=1
+set switchbuf=useopen
+set showtabline=2
+set scrolloff=3
+set shell=bash
+set winwidth=79
+
+" ===== BACKUP =====
+set nobackup
+set noswapfile
+set nowritebackup
+
+" ===== GO =====
+au FileType go setl ts=4 sw=4 noexpandtab
+
+" ===== HTML =====
+autocmd FileType html, hbs set ts=4 sw=4
+
+" ===== JS =====
+au BufRead,BufNewFile *.json set filetype=json
+au FileType javascript setl sw=4 sts=4 tw=80
+
+" ===== KEYBINDINGS =====
+set backspace=2
+set history=50
+set autowrite
+set incsearch
+
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+set nojoinspaces
+set mouse=a
+
+if has('macunix')
+  set clipboard=unnamed
+else
+  set clipboard=unnamedplus
+endif
+
+nnoremap <Space> :noh<CR>
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+
+vnoremap // y/<C-R>"<CR>"
+
+" ===== NETRW =====
+let g:netrw_banner=0 " Get rid of annoying banner
+let g:netrw_browse_split=4 " Open in prior window
+let g:netrw_altv=1 " Open splits to the right
+let g:netrw_liststyle=3 " Open in tree view
+let g:netrw_winsize=25 " Small window
+let g:netrw_list_hide=netrw_gitignore#Hide() " Ignore everything in the gitignore
+let g:netrw_list_hide.=',\(^|\s\s)\zs\.\S\+'
+
+" ===== RUBY =====
+au BufRead,BufNewFile Vagrantfile, Gemfile, Guardfile set filetype=ruby
+au BufRead,BufNewFile Gemfile set filetype=ruby
+au BufRead,BufNewFile Guardfile set filetype=ruby
+au BufRead,BufNewFile .pryrc set filetype=ruby
+au FileType ruby setl sw=2 sts=2 ts=2 tw=80 " Two spaces per tab
+
+" Set .erb html files
+au FileType ebury setl setl sw=2 sts=2 ts=2 " Two spaces per tab"
+
+augroup Ruby
+  autocmd!
+
+  " Surround with a let block
+  autocmd FileType ruby let @l = "bi:jjyss)IletjjA { "
+
+  " Surround with a factory girl block
+  autocmd FileType ruby let @f = "byiwi:jjyss)IletjjA { FactoryGirl.create(:jjpajj"
+
+  " Parsing included ruby files is slooooow, so disable that
+  autocmd FileType ruby set complete-=i
+augroup END
+
+" ===== RUNTIME =====
+runtime macros/matchit.vim
+
+autocmd FileWritePre * TrailerTrim
+autocmd FileAppendPre * TrailerTrim
+autocmd BufWritePre * TrailerTrim
+autocmd FilterWritePre * TrailerTrim
+
+set tags+=~/src/better-core/tags
+
+" ===== SCSS =====
+autocmd FileType scss set ts=4 sw=4
+
+" ===== VISUAL =====
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+
+" ===== SYNTASTIC =====
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {"mode": "passive"}
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+
+let g:syntastic_ruby_checkers = ['rubocop']
+
+nnoremap <leader>sn :call SyntasticCheck()<cr>
 
 "  Set path for `find` awesomeness
 set path+=**

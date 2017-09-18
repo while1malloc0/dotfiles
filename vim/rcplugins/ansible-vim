@@ -1,1 +1,0 @@
-Plug 'pearofducks/ansible-vim'

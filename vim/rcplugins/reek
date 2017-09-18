@@ -1,3 +1,0 @@
-Plug 'rainerborene/vim-reek'
-
-let g:reek_always_show = 0
