@@ -1,14 +1,5 @@
 let mapleader = " "
 
-function! s:SourceConfigFilesIn(directory)
-  let directory_splat = '~/.vim/' . a:directory . '/*'
-  for config_file in split(glob(directory_splat), '\n')
-    if filereadable(config_file)
-      execute 'source' config_file
-    endif
-  endfor
-endfunction
-
 "  Plugins
 call plug#begin()
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -107,8 +98,6 @@ function! FindDef()
 endfunction
 
 nnoremap fd :call FindDef()<cr>
-
-call s:SourceConfigFilesIn('rcfiles')
 
 " ===== APPEARANCE =====
 colorscheme toothpaste
