@@ -21,8 +21,8 @@ g() {
 autoload -U promptinit; promptinit
 prompt pure
 
-export GOPATH="$HOME/dev/golang/bin"
-export PATH=$PATH:$GOPATH
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/my/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -48,9 +48,13 @@ if [[ $(whoami) == "jonathanturner" ]]; then
   ssh_to_instance() {
     bssh "$(aws ec2 describe-instances --instance-id "$1" | jq -r '.Reservations[0].Instances[0].PrivateIpAddress')"
   }
-fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+  alias prod-encrypt="pbpaste | ansible-vault encrypt_string --vault-password-file=~/.ssh/production.key"
+  alias prod-decrypt="pbpaste | sed 's/^[[:space:]]*//g' | ansible-vault decrypt --vault-password-file=~/.ssh/production.key /dev/stdin --output=-"
+  alias dev-encrypt="pbpaste | ansible-vault encrypt_string --vault-password-file=~/.ssh/development.key"
+  alias dev-decrypt="pbpaste | sed 's/^[[:space:]]*//g' | ansible-vault decrypt --vault-password-file=~/.ssh/development.key /dev/stdin --output=-"
+fi
 
 if [[ $(uname) == 'Darwin' ]]; then
   [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
@@ -71,3 +75,10 @@ if [ -f '/tmp/google-cloud-sdk/completion.zsh.inc' ]; then source '/tmp/google-c
 
 # added by travis gem
 [ -f /Users/jonathanturner/.travis/travis.sh ] && source /Users/jonathanturner/.travis/travis.sh
+eval "$(direnv hook zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules,.idea,.gradle}/*" 2>/dev/null'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+bindkey -s '^p' 'vim $(fzf)^M'
+export HOMEBREW_NO_AUTOUPDATE=1

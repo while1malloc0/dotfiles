@@ -23,6 +23,11 @@ protocol = https
   l = "log --oneline --pretty"
   s = "status"
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
+[diff]
+	tool = vimdiff
+[gui]
+	recentrepo = /Users/jonathanturner/go/src/github.com/Betterment/sopsorific

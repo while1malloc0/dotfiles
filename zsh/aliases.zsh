@@ -9,6 +9,7 @@ alias tf='tail -f'
 alias reload!='. ~/.zshrc'
 alias df='df -h'
 alias ..='cd ..'
+alias vi="vim"
 alias vim="nvim"
 alias v='vim'
 alias tm='tmux'
