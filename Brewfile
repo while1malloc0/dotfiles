@@ -1,17 +1,17 @@
-git
-tmux
-zsh
-neovim
-jq
-autojump
-zsh-autosuggestions
-zsh-completions
-zsh-syntax-highlighting
-wireshark
-wget
-curl
-nmap
-coreutils
-pstree
-direnv
-pyenv
+brew 'git'
+brew 'tmux'
+brew 'zsh'
+brew 'neovim'
+brew 'jq'
+brew 'autojump'
+brew 'zsh-autosuggestions'
+brew 'zsh-completions'
+brew 'zsh-syntax-highlighting'
+brew 'wireshark'
+brew 'wget'
+brew 'curl'
+brew 'nmap'
+brew 'coreutils'
+brew 'pstree'
+brew 'direnv'
+brew 'pyenv'

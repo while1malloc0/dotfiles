@@ -9,4 +9,7 @@ if [ "$(uname)" == "Darwin" ]; then
   brew bundle
 fi
 
-find . -name bootstrap.sh -exec bash -c 'fname="$1"; $PWD/$fname' _ {} \;
+bootstraps=( 'zsh' 'tmux' 'vim' )
+for dir in "${bootstraps[@]}"; do
+    ./$dir/bootstrap.sh	
+done
