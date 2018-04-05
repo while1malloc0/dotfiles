@@ -1,6 +1,8 @@
 [hub]
 protocol = https
 
+[core]
+  editor = nvim
 [credential]
 	helper = osxkeychain
 [user]
@@ -22,6 +24,8 @@ protocol = https
   ap = "add -p"
   l = "log --oneline --pretty"
   s = "status"
+  b = branch
+  current-branch = rev-parse --abbrev-ref head
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
