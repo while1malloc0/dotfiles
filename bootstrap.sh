@@ -4,9 +4,9 @@ install_brew() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
-if [ $(uname) == "Darwin" ]; then
+if [ "$(uname)" == "Darwin" ]; then
   command -v brew > /dev/null 2>&1 || install_brew
   brew bundle
 fi
 
-find . -name bootstrap.sh -exec bash -c "$PWD/{}" {} \;
+find . -name bootstrap.sh -exec bash -c 'fname="$1"; $PWD/$fname' _ {} \;

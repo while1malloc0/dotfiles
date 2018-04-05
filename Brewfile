@@ -1,2 +1,17 @@
+git
+tmux
 zsh
 neovim
+jq
+autojump
+zsh-autosuggestions
+zsh-completions
+zsh-syntax-highlighting
+wireshark
+wget
+curl
+nmap
+coreutils
+pstree
+direnv
+pyenv
