@@ -15,3 +15,6 @@ brew 'coreutils'
 brew 'pstree'
 brew 'direnv'
 brew 'pyenv'
+
+cask 'caffeine'
+cask 'launchcontrol'
