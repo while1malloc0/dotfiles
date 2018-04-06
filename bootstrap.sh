@@ -11,5 +11,5 @@ fi
 
 bootstraps=( 'zsh' 'tmux' 'vim' )
 for dir in "${bootstraps[@]}"; do
-    ./$dir/bootstrap.sh	
+    "./$dir/bootstrap.sh"
 done
