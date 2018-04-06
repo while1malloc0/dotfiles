@@ -2,7 +2,7 @@
 alias cls='clear; ls'
 alias ll='ls -alGh'
 alias ls='ls -Gh'
-alias l='ll'
+alias l='ls'
 alias lsg='ls | grep'
 alias less='less -r'
 alias tf='tail -f'
