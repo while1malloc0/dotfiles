@@ -18,14 +18,19 @@ g() {
   fi
 }
 
+fpath+=('/home/jturner/.local/npm-global/lib/node_modules/pure-prompt/functions')
 autoload -U promptinit; promptinit
 prompt pure
+# prompt redhat
 
-export GOPATH="$HOME/go"
+export PATH="/usr/local/go/bin:$PATH"
+export GOPATH="$HOME/code"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/my/scripts"
 export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/npm-global/bin"
+export PATH="$PATH:$HOME/.emacs.d/bin:$PATH"
 
 # Get zsh functions (there's a better way to do this probably)
 # Mac
@@ -62,7 +67,7 @@ else
   source /usr/share/autojump/autojump.sh
 fi
 
-autoload -U +X compinit && compinit
+autoload -U +X compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 find /usr/local/etc/bash_completion.d -type f -exec source {} \;
 command -v aws_completer &> /dev/null && complete -C $(which aws_completer) aws
@@ -82,3 +87,14 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bindkey -s '^p' 'vim $(fzf)^M'
 export HOMEBREW_NO_AUTOUPDATE=1
+
+alias k='kubectl'
+alias kc='kubectx $(kubectx | fzf)'
+alias 'kc?'='kubectx'
+alias kns='kubens $(kubens | fzf)'
+alias 'kns?'='kubens'
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+export PATH="$HOME/.local/bin:$PATH"

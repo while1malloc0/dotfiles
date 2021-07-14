@@ -4,11 +4,11 @@ nb() {
 }
 
 pr() {
-  CURRENT_BRANCH=$(git rev-parse --abbrev-ref head)
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   PARENT_BRANCH=$(echo $CURRENT_BRANCH | cut -d '/' -f2)
   REPO_NAME=$(basename `git rev-parse --show-toplevel`)
   git push -u origin $CURRENT_BRANCH
-  open "https://github.com/Betterment/$REPO_NAME/compare/$PARENT_BRANCH...$CURRENT_BRANCH?expand=1"
+  x-www-browser "https://github.com/sqsp/$REPO_NAME/compare/$CURRENT_BRANCH?expand=1"
 }
 
 watch(){
@@ -52,5 +52,5 @@ fr() {
   find_this=$2
   replace_with_this=$3
 
-  rg -l $find_this $dir | xargs -n1 sed -i '' s/$find_this/$replace_with_this/g
+  rg -l $find_this $dir | xargs -n1 sed -i'' s/$find_this/$replace_with_this/g
 }

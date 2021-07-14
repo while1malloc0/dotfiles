@@ -7,7 +7,7 @@ protocol = https
 	helper = osxkeychain
 [user]
 	name = John Turner
-	email = johnathan.turner@betterment.com
+	email = jturner@squarespace.com
 [init]
 	templatedir = ~/.git_template
 [push]
@@ -16,7 +16,7 @@ protocol = https
   c = "commit"
   co = checkout
   lc = local-checkout
-  hard-reset = "reset --hard head"
+  hard-reset = "reset --hard HEAD"
   hr = hard-reset
   p = "push"
   nb = new-branch
@@ -25,13 +25,13 @@ protocol = https
   l = "log --oneline --pretty"
   s = "status"
   b = branch
-  current-branch = rev-parse --abbrev-ref head
+  current-branch = rev-parse --abbrev-ref HEAD
+  ff = "pull --ff-only"
+  delete-branch = "branch -D"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
 	process = git-lfs filter-process
 [diff]
-	tool = vimdiff
-[gui]
-	recentrepo = /Users/jonathanturner/go/src/github.com/Betterment/sopsorific
+	tool = tig

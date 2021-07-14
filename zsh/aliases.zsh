@@ -9,9 +9,9 @@ alias tf='tail -f'
 alias reload!='. ~/.zshrc'
 alias df='df -h'
 alias ..='cd ..'
-alias vi="vim"
-alias vim="nvim"
-alias v='vim'
+alias vi="emacs -nw"
+alias vim="emacs -nw"
+alias v='emacs -nw'
 alias tm='tmux'
 alias h='history | fzf | cut -c 8- | pbcopy'
 alias cl='clear'
@@ -44,17 +44,11 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 alias map='xargs -n1'
 
 # Find and edit
-alias fe='vim $(fzf)'
+alias fe='emacs -nw $(fzf)'
 
 # Select git branch
 alias gsb='git checkout $(git branch | fzf)'
 # Delete selected git branch
-alias gsd!='git delete-branch $(git branch | grep -v "master$" | grep -v "stage$" | fzf)'
-# Resolve merge conflicts in vim
-alias grc='vim -p $(git diff --name-only --diff-filter=U) +"/HEAD"'
-
-# If on mac, use macvim's rendering engine because terminal vim on mac normally
-# suuuuuuuucks at rendering
-# if [ $(uname) = 'Darwin' ]; then
-#   alias vim='mvim -v'
-# fi
+alias gsd!='git delete-branch $(git branch | grep -v "master$" | grep -v "stage$" | grep -v "main$" | fzf)'
+# Resolve merge conflicts in emacs -nw
+alias grc='emacs -nw -p $(git diff --name-only --diff-filter=U) +"/HEAD"'

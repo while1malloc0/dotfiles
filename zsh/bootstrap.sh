@@ -2,16 +2,19 @@
 
 set -euo pipefail
 
-source "$PWD/../utilities.sh"
+cd "$(dirname "$0")/.."
 
 echo 'Setting up ZSH'
 
-echo '[1/2] Checking if ZSH is the current shell'
+echo '===> Installing zsh if necessary'
+command -v zsh > /dev/null 2&>1 || sudo apt install zsh
+
+echo '===> Checking if ZSH is the current shell'
 if ! [ "$(echo $0)" == 'zsh' ]; then
-  chsh -s "$(command -v zsh)"
+  sudo chsh $USER -s "$(command -v zsh)"
 fi
 
-echo '[2/2] Linking zshrc'
-ln -s "$PWD/zshrc" "$HOME/.zshrc" > /dev/null/ 2>&1
+echo '===> Linking zshrc'
+ln -s "$PWD/zsh/zshrc" "$HOME/.zshrc"
 
 echo 'Finished setting up ZSH'
