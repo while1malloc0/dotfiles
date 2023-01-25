@@ -12,6 +12,7 @@ protocol = https
 	templatedir = ~/.git_template
 [push]
 	default = simple
+	autoSetupRemote = true
 [alias]
   c = "commit"
   co = checkout

@@ -9,9 +9,6 @@ alias tf='tail -f'
 alias reload!='. ~/.zshrc'
 alias df='df -h'
 alias ..='cd ..'
-alias vi="emacs -nw"
-alias vim="emacs -nw"
-alias v='emacs -nw'
 alias tm='tmux'
 alias h='history | fzf | cut -c 8- | pbcopy'
 alias cl='clear'
@@ -43,12 +40,7 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # ex: ls | map cat
 alias map='xargs -n1'
 
-# Find and edit
-alias fe='emacs -nw $(fzf)'
-
 # Select git branch
 alias gsb='git checkout $(git branch | fzf)'
 # Delete selected git branch
 alias gsd!='git delete-branch $(git branch | grep -v "master$" | grep -v "stage$" | grep -v "main$" | fzf)'
-# Resolve merge conflicts in emacs -nw
-alias grc='emacs -nw -p $(git diff --name-only --diff-filter=U) +"/HEAD"'
